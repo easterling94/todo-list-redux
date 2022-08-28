@@ -9,11 +9,11 @@ const TodoContainer = () => {
 
   const changeItem = (item, action) => {
     const chosenItem = item.currentTarget.parentElement.parentElement;
-    switch(action) {
-      case DELETE_ITEM:
+    switch(action.type) {
+      case DELETE_ITEM.type:
         setDataList(dataList.filter((el) => el.id !== Number(chosenItem.id)))
         break;
-      case CHANGE_STATUS:
+      case CHANGE_STATUS.type:
         setDataList(dataList.map((task) => task.id !== Number(chosenItem.id) ? task : {...task, status: !task.status}))
         break;
       default:

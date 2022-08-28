@@ -1,0 +1,31 @@
+
+
+.wrapper {
+  width: 150px;
+  margin: 0px auto;
+}
+.mode {
+  --border: 2px;
+  --wrapperWidth: 70px;
+  --ball: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.holder {
+  width: var(--wrapperWidth);
+  height: calc(var(--ball) + var(--border) * 2);
+  border: var(--border) solid green;
+  background-color: green;
+  border-radius: var(--ball);
+  position: relative;
+}
+.ball {
+  width: var(--ball);
+  height: var(--ball);
+  border: var(--border) solid grey;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  transition: left 0.5s;
+}

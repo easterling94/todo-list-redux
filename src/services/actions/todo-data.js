@@ -1,2 +1,8 @@
-export const DELETE_ITEM = 'DELETE_ITEM'
-export const CHANGE_STATUS = 'CHANGE_STATUS'
+export const DELETE_ITEM = {
+  type: 'todos/todoDelete',
+  payload: 'something useful'
+}
+export const CHANGE_STATUS = {
+  type: 'todos/changeStatus',
+  payload: 'something useful' 
+}

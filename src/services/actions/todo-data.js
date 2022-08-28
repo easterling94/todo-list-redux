@@ -1,0 +1,2 @@
+export const DELETE_ITEM = 'DELETE_ITEM'
+export const CHANGE_STATUS = 'CHANGE_STATUS'

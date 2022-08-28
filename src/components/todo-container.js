@@ -2,21 +2,22 @@ import TodoItem from './todo-item'
 import styles from '../assets/todo-container.module.css'
 import data from '../services/test-data'
 import { useState } from 'react'
+import { DELETE_ITEM, CHANGE_STATUS } from '../services/actions/todo-data'
 
 const TodoContainer = () => {
   const [dataList, setDataList] = useState(data);
 
-  const changeItem = (item) => {
-    const chosenItem = dataList.filter((el) => el.id === parseInt(item.currentTarget.parentElement.id))[0];
-    console.log(item.target);
-    switch (item.target.tagName) {
-      case 'CHANGE_STATUS':
-        
-      break;
-      case 'DELETE':
-        setDataList(dataList.filter((el) => el!== chosenItem))
+  const changeItem = (item, action) => {
+    const chosenItem = item.currentTarget.parentElement.parentElement;
+    switch(action) {
+      case DELETE_ITEM:
+        setDataList(dataList.filter((el) => el.id !== Number(chosenItem.id)))
+        break;
+      case CHANGE_STATUS:
+        setDataList(dataList.map((task) => task.id !== Number(chosenItem.id) ? task : {...task, status: !task.status}))
+        break;
       default:
-        return
+        return 'ERROR';
     }
   }
 

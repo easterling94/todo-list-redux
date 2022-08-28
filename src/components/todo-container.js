@@ -17,7 +17,7 @@ const TodoContainer = () => {
         setDataList(dataList.map((task) => task.id !== Number(chosenItem.id) ? task : {...task, status: !task.status}))
         break;
       default:
-        return 'ERROR';
+        setDataList(dataList)
     }
   }
 

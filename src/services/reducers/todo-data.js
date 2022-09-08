@@ -6,3 +6,15 @@ const todoInitialState = [
   {id: 3, status: true, text: 'Iron clothes'}
 ]
 
+export const changeData = (state = todoInitialState, action) => {
+  switch (action.type) {
+    case DELETE_ITEM.type:
+      console.log('DELETE');
+      break;
+    case CHANGE_STATUS.type:
+      console.log('CHANGE STATUS');
+      break;
+    default:
+      return state;
+  }
+}

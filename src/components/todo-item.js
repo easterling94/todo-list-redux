@@ -1,25 +1,41 @@
 import styles from '../assets/todo-item.module.css'
 import { GrCheckbox, GrCheckboxSelected } from 'react-icons/gr'
 import { AiTwotoneDelete } from 'react-icons/ai'
-
+import { useDispatch } from 'react-redux'
 import { DELETE_ITEM, CHANGE_STATUS } from '../services/actions/todo-data'
 
-const TodoItem = ({changeItem, id, text, status}) => {
+const TodoItem = ({id, text, status}) => {
+  const dispatch = useDispatch();
+
+  const deleteItem = () => {
+    dispatch({
+      type: DELETE_ITEM,
+      id
+    })
+  }
+
+  const changeStatus = () => {
+    dispatch({
+      type: CHANGE_STATUS,
+      id
+    })
+  }
+
   return (
-    <div className={styles.item} id={id}>
+    <div className={styles.item}>
       <div className={styles.text}>
         {text}
       </div>
       <div className={styles.icons}>
         {status ? 
-          <div className={styles.icon} onClick={(item) => changeItem(item, CHANGE_STATUS)}>
+          <div className={styles.icon} onClick={changeStatus}>
             <GrCheckbox />
           </div> : 
-          <div className={styles.icon} onClick={(item) => changeItem(item, CHANGE_STATUS)}>
+          <div className={styles.icon} onClick={changeStatus}>
             <GrCheckboxSelected/>
           </div>
         }
-        <div className={styles.icon} onClick={(item) => changeItem(item, DELETE_ITEM)}>
+        <div className={styles.icon} onClick={deleteItem}>
           <AiTwotoneDelete />
         </div>
       </div>

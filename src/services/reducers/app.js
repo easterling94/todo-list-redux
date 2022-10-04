@@ -6,7 +6,7 @@ const appLevelState = {
 
 export const changeAppState = (state = appLevelState, action) => {
   switch (action.type) {
-    case APP_MODE.type:
+    case APP_MODE:
       return {...state, modeLight: !state.modeLight};
     default:
       return state;

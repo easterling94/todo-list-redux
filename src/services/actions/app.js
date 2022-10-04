@@ -1,4 +1,1 @@
-export const APP_MODE = {
-  type: 'app/mode',
-  payload: 'App mode has been changed'
-}
+export const APP_MODE = 'APP_MODE'

@@ -1,7 +1,7 @@
 import styles from '../assets/modeToggle.module.css'
 import { useSelector, shallowEqual } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { APP_MODE } from '../services/actions/app';
+import { APP_MODE } from '../services/constants/app';
 
 const ModeToggle = () => {
   const modeLigth = useSelector(store => store.app.modeLight, shallowEqual);

@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { CHANGE_TASK, CHANGE_TASK_STATUS, ADD_ITEM } from '../services/actions/todo-data';
+import { CHANGE_TASK, CHANGE_TASK_STATUS, FORM_SUBMIT_SUCCESS } from '../services/constants/todo-data';
 import styles from '../assets/todoAddForm.module.css'
 
 const TodoAddForm = () => {
-  const {itemsCollection, formState} = useSelector(store => ({
-    itemsCollection: store.todoData.todoList,
+  const { formState} = useSelector(store => ({
     formState: store.todoData.formState
   }));
 
@@ -20,19 +19,11 @@ const TodoAddForm = () => {
 
   const addItem = (e) => {
     e.preventDefault();
-    dispatch({
-      type: ADD_ITEM,
-      payload: {
-        id: itemsCollection.length + 1,
-        status: true,
-        text: 'TEST'
-      }
-    })
-    console.log(itemsCollection)
+    dispatch({type: FORM_SUBMIT_SUCCESS})
   }
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={addItem}>
       <div>
         <label htmlFor='task'>Task:</label>
         <input type='text' name='task' value={formState.text} onChange={changeTask}></input>
@@ -43,7 +34,7 @@ const TodoAddForm = () => {
         <input type='checkbox' name='status' value={formState.status} onChange={changeTaskStatus}></input>  
       </div>
       
-      <button type='submit' onSubmit={addItem}>Add Item</button>
+      <button type='submit'>Add Item</button>
     </form>
   )
 }

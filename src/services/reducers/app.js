@@ -1,4 +1,4 @@
-import { APP_MODE } from '../actions/app';
+import { APP_MODE } from '../constants/app';
 
 const appLevelState = {
   modeLight: true,
@@ -9,6 +9,6 @@ export const changeAppState = (state = appLevelState, action) => {
     case APP_MODE:
       return {...state, modeLight: !state.modeLight};
     default:
-      return state;
+      return {...state};
   }
 }

@@ -2,7 +2,7 @@ import styles from '../assets/todo-item.module.css'
 import { GrCheckbox, GrCheckboxSelected } from 'react-icons/gr'
 import { AiTwotoneDelete } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
-import { DELETE_ITEM, CHANGE_STATUS } from '../services/constants/todo-data'
+import { DELETE_ITEM, CHANGE_STATUS } from '../services/actions/todo-data'
 
 const TodoItem = ({id, text, statusIsDone}) => {
   const dispatch = useDispatch();

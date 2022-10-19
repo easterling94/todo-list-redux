@@ -5,15 +5,16 @@ import {
   CHANGE_TASK_STATUS, 
   FORM_SUBMIT,
   FORM_SUBMIT_SUCCESS,
-  FORM_SUBMIT_ERROR
-} from '../constants/todo-data'
+  FORM_SUBMIT_ERROR,
+  API_FAILED,
+  API_REQUEST,
+  API_SUCCESS
+} from '../actions/todo-data'
 
 const todoInitialState = {
-  todoList: [
-    {id: 1, statusIsDone: false, text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, nulla!'},
-    {id: 2, statusIsDone: true, text: 'Do groceries'},
-    {id: 3, statusIsDone: true, text: 'Iron clothes'}
-  ],
+  todoList: [],
+  todoRequest: false,
+  todoRequestFailed: false,
   formState: {
     form: {
       text: '', 
@@ -26,6 +27,27 @@ const todoInitialState = {
 
 export const changeData = (state = todoInitialState, action) => {
   switch (action.type) {
+    case API_REQUEST: {
+      return {
+        ...state,
+        todoRequest: true
+      }
+    }
+    case API_SUCCESS: {
+      return {
+        ...state,
+        todoList: action.items,
+        todoRequest: false,
+        todoRequestFailed: false
+      }
+    }
+    case API_FAILED: {
+      return {
+        ...state,
+        todoRequest: false,
+        todoRequestFailed: true
+      }
+    }
     case DELETE_ITEM:
       return {...state, todoList: [...state.todoList].filter((el) => el.id !== action.id)}
     case CHANGE_STATUS:

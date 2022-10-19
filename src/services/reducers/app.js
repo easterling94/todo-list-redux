@@ -1,4 +1,4 @@
-import { APP_MODE } from '../constants/app';
+import { APP_MODE } from '../actions/app';
 
 const appLevelState = {
   modeLight: true,
